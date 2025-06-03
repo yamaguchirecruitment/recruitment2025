@@ -227,14 +227,14 @@
         return;
       }
 
+      gtag('event', 'submit', {
+        'event_category': 'Form',
+        'event_label': 'Interview Form'
+      });
+
+      // 遷移先ページへリダイレクト
+      window.location.href = "thanks.html";
       event.preventDefault();
-      const container = form.closest(".form-container");
-      container.innerHTML = `
-        <div style="text-align: center; padding: 80px 20px;">
-          <h2 style="color: #4a148c; font-size: 1.5em;">送信完了しました！</h2>
-          <p style="margin-top: 1em; font-size: 1.1em;">担当者より24時間以内にご連絡させていただきます！</p>
-        </div>
-      `;
     });
   </script>
 </body>
