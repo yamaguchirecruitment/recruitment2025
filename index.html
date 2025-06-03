@@ -12,9 +12,7 @@
     gtag('config', 'G-9522B8XWTD');
   </script>
   <style>
-    * {
-      box-sizing: border-box;
-    }
+    * { box-sizing: border-box; }
     body {
       font-family: sans-serif;
       background-color: #f3edf9;
@@ -116,12 +114,8 @@
   <div class="intro-container">
     <h1>ヤマグチレッカー｜カジュアル面談 お申し込みフォーム</h1>
     <p>ご覧いただきありがとうございます！</p>
-    <p>ヤマグチレッカーでは、まずは「気軽に話してみたい」「ちょっと興味がある」<br>
-    という方でもご相談いただける【カジュアル面談】を実施しています。</p>
-    <p>✔ 履歴書不要<br>
-    ✔ 私服OK<br>
-    ✔ オンライン・電話も対応<br>
-    ✔ 面談後の応募は自由です</p>
+    <p>ヤマグチレッカーでは、まずは「気軽に話してみたい」「ちょっと興味がある」<br>という方でもご相談いただける【カジュアル面談】を実施しています。</p>
+    <p>✔ 履歴書不要<br>✔ 私服OK<br>✔ オンライン・電話も対応<br>✔ 面談後の応募は自由です</p>
     <p>「どんな仕事か聞いてみたい」「職場の雰囲気が気になる」など、どんなきっかけでも大歓迎です。</p>
     <p>以下のフォームにご記入いただけましたら、担当者より24時間以内にご連絡させていただきます。</p>
     <p class="note">* 必須の質問です</p>
@@ -130,20 +124,20 @@
   <form id="interview-form" class="form-container" action="https://formspree.io/f/myzjybba" method="POST">
     <div class="form-group">
       <label>1. お名前<span class="required">*</span></label>
-      <input type="text" name="name" placeholder="回答を入力" required>
+      <input type="text" name="name" required>
     </div>
     <div class="form-group">
       <label>2. 年齢<span class="required">*</span></label>
-      <input type="text" name="age" placeholder="回答を入力" required>
+      <input type="text" name="age" required>
     </div>
     <div class="form-group">
       <label>3. お住まいのエリア（市区町村）<span class="required">*</span></label>
-      <input type="text" name="area" placeholder="回答を入力" required>
+      <input type="text" name="area" required>
     </div>
     <div class="form-group">
       <label>4. 現在のご職業／業種経験<span class="required">*</span></label>
       <small>例：建設業で3年、運送業で8年、学生など</small>
-      <input type="text" name="occupation" placeholder="回答を入力" required>
+      <input type="text" name="occupation" required>
     </div>
     <div class="form-group">
       <label>5. お持ちの運転免許<span class="required">*</span></label>
@@ -183,14 +177,14 @@
       </div>
     </div>
     <div class="form-group">
-      <label>9. 面談希望日時（第1〜第3候補）まで教えてください。（土日祝可）<span class="required">*</span></label>
-      <small>例）第1希望：6月5日（水）18:00〜19:00／第2希望：6月6日（木）午前中（9:00〜12:00）／第3希望：6月7日（金）20:00以降なら対応可</small>
-      <textarea name="datetime" rows="3" placeholder="回答を入力" required></textarea>
+      <label>9. 面談希望日時（第1〜第3候補）<span class="required">*</span></label>
+      <small>例：第1希望：6月5日（水）18:00〜19:00／第2希望：6月6日（木）午前中（9:00〜12:00）／第3希望：6月7日（金）20:00以降なら対応可</small>
+      <textarea name="datetime" rows="3" required></textarea>
     </div>
     <div class="form-group">
       <label>10. ご連絡しやすい方法と時間<span class="required">*</span></label>
       <small>※例：平日18時以降なら都合がいい</small>
-      <input type="text" name="contact_time" placeholder="回答を入力" required>
+      <input type="text" name="contact_time" required>
     </div>
     <div class="form-group">
       <label>11. 当社を知ったきっかけ<span class="required">*</span></label>
@@ -204,9 +198,9 @@
     </div>
     <div class="form-group">
       <label>12. その他ご質問・ご相談</label>
-      <textarea name="other" rows="3" placeholder="回答を入力"></textarea>
+      <textarea name="other" rows="3"></textarea>
     </div>
-    <button type="submit">送信する</button>
+    <button type="submit" id="submit-button">送信する</button>
   </form>
 
   <script>
@@ -229,12 +223,13 @@
 
       gtag('event', 'submit', {
         'event_category': 'Form',
-        'event_label': 'Interview Form'
+        'event_label': 'Interview Form Submitted'
       });
 
-      // 遷移先ページへリダイレクト
-      window.location.href = "thanks.html";
       event.preventDefault();
+      setTimeout(function() {
+        window.location.href = "thanks.html";
+      }, 500);
     });
   </script>
 </body>
