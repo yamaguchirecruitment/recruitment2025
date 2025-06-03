@@ -224,7 +224,7 @@ messageDiv.innerHTML = `
   <h1 style="color: #4a148c;">送信ありがとうございました！</h1>
   <p>担当者よりご連絡いたします。</p>
 `;
-document.body.appendChild(messageDiv);
+document.querySelector('.intro-container')?.after(messageDiv);
         } else {
           alert("送信に失敗しました。もう一度お試しください。");
         }
