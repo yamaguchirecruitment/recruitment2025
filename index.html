@@ -12,9 +12,7 @@
     gtag('config', 'G-9522B8XWTD');
   </script>
   <style>
-    * {
-      box-sizing: border-box;
-    }
+    * { box-sizing: border-box; }
     body {
       font-family: sans-serif;
       background-color: #f3edf9;
@@ -132,8 +130,6 @@
       <label>0. メールアドレスを教えてください<span class="required">*</span></label>
       <input type="email" name="email" required placeholder="例：example@example.com">
     </div>
-
-  <form id="interview-form" class="form-container" action="https://formspree.io/f/myzjybba" method="POST">
     <div class="form-group">
       <label>1. お名前<span class="required">*</span></label>
       <input type="text" name="name" required placeholder="回答を入力">
@@ -233,7 +229,6 @@
         return;
       }
 
-      // Google Analytics イベントトラッキング
       gtag('event', 'submit', {
         'event_category': 'Form',
         'event_label': 'Interview Form Submitted'
