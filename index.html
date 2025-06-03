@@ -39,12 +39,17 @@
       margin-top: 2em;
       margin-bottom: 2em;
     }
+    form {
+      margin-top: 3em;
+    }
     .form-group {
-      margin: 2.5em 0;
-      padding: 1.5em 1em;
+      margin: 2.5em auto;
+      padding: 1.5em;
       border: 1px solid #e0e0e0;
       border-radius: 10px;
       background-color: #fafafa;
+      width: 90%;
+      max-width: 600px;
     }
     .form-group:first-of-type {
       margin-top: 3.5em;
@@ -80,7 +85,8 @@
       font-weight: normal;
     }
     button {
-      margin-top: 2em;
+      margin: 2em auto;
+      display: block;
       padding: 1em 2em;
       background-color: #4a148c;
       color: white;
@@ -88,7 +94,8 @@
       border-radius: 6px;
       font-size: 1.1em;
       cursor: pointer;
-      width: 100%;
+      width: 90%;
+      max-width: 600px;
     }
     .required {
       color: red;
@@ -97,7 +104,7 @@
     @media screen and (max-width: 600px) {
       .form-group {
         padding: 1.5em 1em;
-        margin: 2.5em 0;
+        margin: 2.5em auto;
       }
       input[type="text"], textarea {
         font-size: 0.95em;
@@ -124,6 +131,14 @@
     <p>「どんな仕事か聞いてみたい」「職場の雰囲気が気になる」など、どんなきっかけでも大歓迎です。</p>
     <p>以下のフォームにご記入いただけましたら、担当者より24時間以内にご連絡させていただきます。</p>
     <p class="note">* 必須の質問です</p>
+
+    <form id="interview-form" action="https://formspree.io/f/myzjybba" method="POST">
+      <div class="form-group">
+        <label>1. お名前<span class="required">*</span></label>
+        <input type="text" name="name" placeholder="回答を入力" required>
+      </div>
+      <!-- 以下に質問2〜12のブロックを追加 -->
+    </form>
   </div>
 </body>
 </html>
