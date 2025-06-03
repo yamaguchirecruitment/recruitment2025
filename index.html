@@ -243,7 +243,12 @@
         });
 
         if (response.ok) {
-          form.innerHTML = "<p style='text-align:center; font-size:1.2em;'>送信ありがとうございました。<br>担当者よりご連絡いたします。</p>";
+          document.body.innerHTML = `
+            <div style="max-width: 700px; margin: 5em auto; padding: 2em; background: white; border-radius: 8px; text-align: center; box-shadow: 0 0 10px rgba(0,0,0,0.1);">
+              <h1 style="color: #4a148c;">送信ありがとうございました！</h1>
+              <p>担当者よりご連絡いたします。</p>
+            </div>
+          `;
         } else {
           alert("送信に失敗しました。もう一度お試しください。");
         }
@@ -253,4 +258,5 @@
     });
   </script>
 </body>
+</html>
 </html>
