@@ -4,7 +4,6 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>ヤマグチレッカー｜カジュアル面談フォーム</title>
-  <!-- Google Analytics -->
   <script async src="https://www.googletagmanager.com/gtag/js?id=G-9522B8XWTD"></script>
   <script>
     window.dataLayer = window.dataLayer || [];
@@ -40,12 +39,17 @@
       margin-bottom: 1.5em;
     }
     .form-group {
-      margin-bottom: 2em;
+      margin-bottom: 2.5em;
+      padding: 1em;
+      border: 1px solid #e0e0e0;
+      border-radius: 10px;
+      background-color: #fafafa;
     }
     .form-group label {
       display: block;
       margin-bottom: 0.5em;
       font-weight: bold;
+      font-size: 1.1em;
     }
     .form-group small {
       display: block;
@@ -65,7 +69,9 @@
     }
     .checkbox-group label,
     .radio-group label {
-      display: block;
+      display: flex;
+      align-items: center;
+      gap: 0.5em;
       margin-top: 0.5em;
       font-weight: normal;
     }
@@ -78,10 +84,25 @@
       border-radius: 6px;
       font-size: 1.1em;
       cursor: pointer;
+      width: 100%;
     }
     .required {
       color: red;
       margin-left: 0.3em;
+    }
+    @media screen and (max-width: 600px) {
+      .form-group {
+        padding: 1em 0.5em;
+      }
+      input[type="text"], textarea {
+        font-size: 0.95em;
+      }
+      label, small {
+        font-size: 0.95em;
+      }
+      button {
+        font-size: 1em;
+      }
     }
   </style>
 </head>
@@ -98,6 +119,13 @@
     <p>「どんな仕事か聞いてみたい」「職場の雰囲気が気になる」など、どんなきっかけでも大歓迎です。</p>
     <p>以下のフォームにご記入いただけましたら、担当者より24時間以内にご連絡させていただきます。</p>
     <p class="note">* 必須の質問です</p>
+
+    <!-- フォーム本体やスクリプトなど残りのコードは、前回投稿済みのものを使用してください -->
+
+  </div>
+</body>
+</html>
+
 
     <form id="interview-form" action="https://formspree.io/f/myzjybba" method="POST">
       <!-- ここに質問1〜12すべてを含むform-groupブロックがすでに正しく記載されています -->
