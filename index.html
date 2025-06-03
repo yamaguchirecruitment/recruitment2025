@@ -12,7 +12,9 @@
     gtag('config', 'G-9522B8XWTD');
   </script>
   <style>
-    * { box-sizing: border-box; }
+    * {
+      box-sizing: border-box;
+    }
     body {
       font-family: sans-serif;
       background-color: #f3edf9;
@@ -26,6 +28,16 @@
       margin: 2em auto;
       border-radius: 8px;
       box-shadow: 0 0 10px rgba(0, 0, 0, 0.05);
+    }
+    h1 {
+      font-size: 1.8em;
+      margin-bottom: 1em;
+      line-height: 1.4;
+    }
+    .note {
+      color: red;
+      margin-top: 2em;
+      margin-bottom: 2em;
     }
     .form-group {
       margin: 2.5em auto;
@@ -47,17 +59,19 @@
       margin-bottom: 1em;
       color: #666;
     }
-    input[type="text"], input[type="email"], textarea {
+    input[type="text"], textarea {
       width: 100%;
       padding: 1em;
       border: 1px solid #ccc;
       border-radius: 6px;
       font-size: 1em;
     }
-    input::placeholder, textarea::placeholder {
+    input::placeholder,
+    textarea::placeholder {
       color: #aaa;
     }
-    .checkbox-group label, .radio-group label {
+    .checkbox-group label,
+    .radio-group label {
       display: flex;
       align-items: center;
       gap: 0.5em;
@@ -81,6 +95,21 @@
       color: red;
       margin-left: 0.3em;
     }
+    @media screen and (max-width: 600px) {
+      .form-group {
+        padding: 1.5em;
+        margin: 2.5em auto;
+      }
+      input, textarea {
+        font-size: 0.95em;
+      }
+      label, small {
+        font-size: 0.95em;
+      }
+      button {
+        font-size: 1em;
+      }
+    }
   </style>
 </head>
 <body>
@@ -98,11 +127,7 @@
     <p class="note">* 必須の質問です</p>
   </div>
 
-  <form id="interview-form" class="form-container">
-    <div class="form-group">
-      <label>0. メールアドレスを教えてください<span class="required">*</span></label>
-      <input type="email" name="email" required placeholder="例：example@example.com">
-    </div>
+  <form id="interview-form" class="form-container" action="https://formspree.io/f/myzjybba" method="POST">
     <div class="form-group">
       <label>1. お名前<span class="required">*</span></label>
       <input type="text" name="name" required placeholder="回答を入力">
@@ -121,7 +146,7 @@
       <input type="text" name="occupation" required placeholder="回答を入力">
     </div>
     <div class="form-group">
-      <label>5. お持ちの運転免許はなんですか？<span class="required">*</span></label>
+      <label>5. お持ちの運転免許<span class="required">*</span></label>
       <div class="checkbox-group">
         <label><input type="checkbox" name="license" value="普通免許"> 普通免許</label>
         <label><input type="checkbox" name="license" value="準中型免許"> 準中型免許</label>
@@ -158,13 +183,14 @@
       </div>
     </div>
     <div class="form-group">
-      <label>9. 面談希望日時（第1〜第3候補）<span class="required">*</span></label>
+      <label>9. 面談希望日時（第1〜第3候補）まで教えてください。（土日祝可）<span class="required">*</span></label>
       <small>例）第1希望：6月5日（水）18:00〜19:00／第2希望：6月6日（木）午前中（9:00〜12:00）／第3希望：6月7日（金）20:00以降なら対応可</small>
       <textarea name="datetime" rows="3" required placeholder="回答を入力"></textarea>
     </div>
     <div class="form-group">
       <label>10. ご連絡しやすい方法と時間<span class="required">*</span></label>
-      <input type="text" name="contact_time" required placeholder="例：平日18時以降なら都合がいい">
+      <small>※例：平日18時以降なら都合がいい</small>
+      <input type="text" name="contact_time" required placeholder="回答を入力">
     </div>
     <div class="form-group">
       <label>11. 当社を知ったきっかけ<span class="required">*</span></label>
@@ -180,12 +206,11 @@
       <label>12. その他ご質問・ご相談</label>
       <textarea name="other" rows="3" placeholder="回答を入力"></textarea>
     </div>
-    <button type="submit">送信する</button>
+    <button type="submit" id="submit-button">送信する</button>
   </form>
 
   <script>
-    document.getElementById("interview-form").addEventListener("submit", async function(event) {
-      event.preventDefault();
+    document.getElementById("interview-form").addEventListener("submit", function(event) {
       const form = event.target;
       const licenseChecked = form.querySelectorAll('input[name="license"]:checked').length > 0;
       const interestChecked = form.querySelectorAll('input[name="interest"]:checked').length > 0;
@@ -193,44 +218,20 @@
       if (!form.checkValidity()) return;
       if (!licenseChecked) {
         alert("5. お持ちの運転免許 を1つ以上選択してください。");
+        event.preventDefault();
         return;
       }
       if (!interestChecked) {
         alert("6. 気になっていること を1つ以上選択してください。");
+        event.preventDefault();
         return;
       }
 
+      // Google Analytics イベントトラッキング
       gtag('event', 'submit', {
         'event_category': 'Form',
         'event_label': 'Interview Form Submitted'
       });
-
-      const formData = new FormData(form);
-      try {
-        const response = await fetch("https://formspree.io/f/myzjybba", {
-          method: "POST",
-          body: formData,
-          headers: {
-            'Accept': 'application/json'
-          }
-        });
-
-        if (response.ok) {
-          
-          document.querySelector('.form-container')?.remove();
-          const messageDiv = document.createElement('div');
-messageDiv.style.cssText = 'max-width: 700px; margin: 5em auto; padding: 2em; background: white; border-radius: 8px; text-align: center; box-shadow: 0 0 10px rgba(0,0,0,0.1);';
-messageDiv.innerHTML = `
-  <h1 style="color: #4a148c;">送信ありがとうございました！</h1>
-  <p>担当者よりご連絡いたします。</p>
-`;
-document.querySelector('.intro-container')?.after(messageDiv);
-        } else {
-          alert("送信に失敗しました。もう一度お試しください。");
-        }
-      } catch (error) {
-        alert("通信エラーが発生しました。ネットワークをご確認ください。");
-      }
     });
   </script>
 </body>
