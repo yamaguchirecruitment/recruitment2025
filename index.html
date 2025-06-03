@@ -44,28 +44,25 @@
     }
     .form-group {
       margin: 2.5em auto;
-      padding: 1.5em;
+      padding: 2em;
       border: 1px solid #e0e0e0;
       border-radius: 10px;
       background-color: #fafafa;
       width: 90%;
       max-width: 600px;
     }
-    .form-group:first-of-type {
-      margin-top: 3.5em;
-    }
     .form-group label {
       display: block;
-      margin-bottom: 0.7em;
+      margin-bottom: 1em;
       font-weight: bold;
       font-size: 1.1em;
     }
     .form-group small {
       display: block;
-      margin-bottom: 0.5em;
+      margin-bottom: 1em;
       color: #666;
     }
-    input[type="text"], textarea {
+    input[type="text"], input[type="email"], textarea {
       width: 100%;
       padding: 1em;
       border: 1px solid #ccc;
@@ -73,6 +70,7 @@
       font-size: 1em;
     }
     input[type="text"]::placeholder,
+    input[type="email"]::placeholder,
     textarea::placeholder {
       color: #aaa;
     }
@@ -85,7 +83,7 @@
       font-weight: normal;
     }
     button {
-      margin: 2em auto;
+      margin: 3em auto;
       display: block;
       padding: 1em 2em;
       background-color: #4a148c;
@@ -103,10 +101,10 @@
     }
     @media screen and (max-width: 600px) {
       .form-group {
-        padding: 1.5em 1em;
+        padding: 1.5em;
         margin: 2.5em auto;
       }
-      input[type="text"], textarea {
+      input[type="text"], input[type="email"], textarea {
         font-size: 0.95em;
       }
       label, small {
@@ -134,127 +132,80 @@
 
     <form id="interview-form" action="https://formspree.io/f/myzjybba" method="POST">
       <div class="form-group">
-        <label>1. お名前<span class="required">*</span></label>
-        <input type="text" name="name" placeholder="回答を入力" required>
+        <label>1. お名前 <span class="required">*</span></label>
+        <input type="text" name="name" placeholder="例）山口 太郎" required />
       </div>
-      <!-- 以下に質問2〜12のブロックを追加 -->
-    </form>
-  </div>
-</body>
-</html>
 
+      <div class="form-group">
+        <label>2. フリガナ <span class="required">*</span></label>
+        <input type="text" name="furigana" placeholder="例）ヤマグチ タロウ" required />
+      </div>
 
-    <form id="interview-form" action="https://formspree.io/f/myzjybba" method="POST">
-      <!-- ここに質問1〜12すべてを含むform-groupブロックがすでに正しく記載されています -->
-      <!-- ご要望のとおり省略せずに含めています -->
       <div class="form-group">
-        <label>1. お名前<span class="required">*</span></label>
-        <input type="text" name="name" placeholder="回答を入力" required>
+        <label>3. 年齢 <span class="required">*</span></label>
+        <input type="text" name="age" placeholder="例）25" required />
       </div>
+
       <div class="form-group">
-        <label>2. 年齢<span class="required">*</span></label>
-        <input type="text" name="age" placeholder="回答を入力" required>
+        <label>4. 電話番号 <span class="required">*</span></label>
+        <input type="text" name="phone" placeholder="例）08012345678" required />
       </div>
+
       <div class="form-group">
-        <label>3. お住まいのエリア（市区町村）<span class="required">*</span></label>
-        <input type="text" name="area" placeholder="回答を入力" required>
+        <label>5. メールアドレス <span class="required">*</span></label>
+        <input type="email" name="email" placeholder="例）sample@example.com" required />
       </div>
+
       <div class="form-group">
-        <label>4. 現在のご職業／業種経験<span class="required">*</span></label>
-        <small>例：建設業で3年、運送業で8年、学生など</small>
-        <input type="text" name="occupation" placeholder="回答を入力" required>
+        <label>6. 現在のご職業 <span class="required">*</span></label>
+        <input type="text" name="job" placeholder="例）会社員 / 学生 / フリーターなど" required />
       </div>
+
       <div class="form-group">
-        <label>5. お持ちの運転免許<span class="required">*</span></label>
-        <div class="checkbox-group">
-          <label><input type="checkbox" name="license" value="普通免許"> 普通免許</label>
-          <label><input type="checkbox" name="license" value="準中型免許"> 準中型免許</label>
-          <label><input type="checkbox" name="license" value="中型免許"> 中型免許</label>
-          <label><input type="checkbox" name="license" value="大型免許"> 大型免許</label>
-          <label><input type="checkbox" name="license" value="けん引免許"> けん引免許</label>
-          <input type="text" name="license_other" placeholder="その他">
-        </div>
-      </div>
-      <div class="form-group">
-        <label>6. 気になっていることは？（複数選択可）<span class="required">*</span></label>
-        <div class="checkbox-group">
-          <label><input type="checkbox" name="interest" value="給与・待遇"> 給与・待遇</label>
-          <label><input type="checkbox" name="interest" value="シフト・勤務時間"> シフト・勤務時間</label>
-          <label><input type="checkbox" name="interest" value="仕事内容"> 仕事内容</label>
-          <label><input type="checkbox" name="interest" value="職場の雰囲気"> 職場の雰囲気</label>
-          <label><input type="checkbox" name="interest" value="資格支援・キャリアパス"> 資格支援・キャリアパス</label>
-          <input type="text" name="interest_other" placeholder="その他">
-        </div>
-      </div>
-      <div class="form-group">
-        <label>7. 今どれくらい転職を考えていますか？<span class="required">*</span></label>
+        <label>7. 普通自動車運転免許の有無 <span class="required">*</span></label>
         <div class="radio-group">
-          <label><input type="radio" name="intention" value="今すぐにでも働きたい" required> 今すぐにでも働きたい</label>
-          <label><input type="radio" name="intention" value="良い職場があれば検討したい"> 良い職場があれば検討したい</label>
-          <label><input type="radio" name="intention" value="まずは話を聞いてみたい"> まずは話を聞いてみたい</label>
+          <label><input type="radio" name="license" value="あり" required /> あり</label>
+          <label><input type="radio" name="license" value="なし" /> なし</label>
         </div>
       </div>
+
       <div class="form-group">
-        <label>8. 希望の面談方法<span class="required">*</span></label>
+        <label>8. ご希望の面談方法 <span class="required">*</span></label>
         <div class="radio-group">
-          <label><input type="radio" name="meeting" value="オンライン（Zoom）" required> オンライン（Zoom）</label>
-          <label><input type="radio" name="meeting" value="対面（本社で）"> 対面（本社で）</label>
+          <label><input type="radio" name="method" value="対面" required /> 対面</label>
+          <label><input type="radio" name="method" value="電話" /> 電話</label>
+          <label><input type="radio" name="method" value="オンライン" /> オンライン</label>
         </div>
       </div>
+
       <div class="form-group">
-        <label>9. 面談希望日時（第1〜第3候補）まで教えてください。（土日祝可）<span class="required">*</span></label>
+        <label>9. 面談希望日時（第1〜第3候補）<span class="required">*</span></label>
         <small>例）第1希望：5月21日（火） 18:00〜19:00<br>第2希望：5月22日（水） 午前中（9:00〜12:00）<br>第3希望：5月23日（木） 20:00以降なら対応可</small>
         <textarea name="datetime" rows="3" placeholder="回答を入力" required></textarea>
       </div>
+
       <div class="form-group">
-        <label>10. ご連絡しやすい方法と時間<span class="required">*</span></label>
-        <small>※例：「平日18時以降にLINE希望」「土日なら電話可」など</small>
-        <input type="text" name="contact_time" placeholder="回答を入力" required>
+        <label>10. 現住所（市区町村まででOK） <span class="required">*</span></label>
+        <input type="text" name="address" placeholder="例）横浜市港南区" required />
       </div>
+
       <div class="form-group">
-        <label>11. 当社を知ったきっかけ<span class="required">*</span></label>
-        <div class="radio-group">
-          <label><input type="radio" name="source" value="TikTok" required> TikTok</label>
-          <label><input type="radio" name="source" value="Instagram"> Instagram</label>
-          <label><input type="radio" name="source" value="知人紹介"> 知人紹介</label>
-          <label><input type="radio" name="source" value="検索"> 検索</label>
-          <input type="text" name="source_other" placeholder="その他">
+        <label>11. ご質問やご要望（任意）</label>
+        <textarea name="question" rows="3" placeholder="質問や希望があればご記入ください"></textarea>
+      </div>
+
+      <div class="form-group">
+        <label>12. 当フォームをどこで知りましたか？ <span class="required">*</span></label>
+        <div class="checkbox-group">
+          <label><input type="checkbox" name="source" value="Instagram" /> Instagram</label>
+          <label><input type="checkbox" name="source" value="知人の紹介" /> 知人の紹介</label>
+          <label><input type="checkbox" name="source" value="Google検索" /> Google検索</label>
+          <label><input type="checkbox" name="source" value="その他" /> その他</label>
         </div>
       </div>
-      <div class="form-group">
-        <label>12. その他ご質問・ご相談</label>
-        <textarea name="other" rows="3" placeholder="回答を入力"></textarea>
-      </div>
+
       <button type="submit">送信する</button>
     </form>
   </div>
-  <script>
-    document.getElementById("interview-form").addEventListener("submit", function(event) {
-      const form = event.target;
-      const licenseChecked = form.querySelectorAll('input[name="license"]:checked').length > 0;
-      const interestChecked = form.querySelectorAll('input[name="interest"]:checked').length > 0;
-
-      if (!form.checkValidity()) return;
-      if (!licenseChecked) {
-        alert("5. お持ちの運転免許 を1つ以上選択してください。");
-        event.preventDefault();
-        return;
-      }
-      if (!interestChecked) {
-        alert("6. 気になっていること を1つ以上選択してください。");
-        event.preventDefault();
-        return;
-      }
-
-      event.preventDefault();
-      const container = form.closest(".container");
-      container.innerHTML = `
-        <div style="text-align: center; padding: 80px 20px;">
-          <h2 style="color: #4a148c; font-size: 1.5em;">送信完了しました！</h2>
-          <p style="margin-top: 1em; font-size: 1.1em;">担当者より24時間以内にご連絡させていただきます！</p>
-        </div>
-      `;
-    });
-  </script>
 </body>
 </html>
