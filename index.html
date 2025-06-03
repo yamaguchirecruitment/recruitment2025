@@ -12,9 +12,7 @@
     gtag('config', 'G-9522B8XWTD');
   </script>
   <style>
-    * {
-      box-sizing: border-box;
-    }
+    * { box-sizing: border-box; }
     body {
       font-family: sans-serif;
       background-color: #f3edf9;
@@ -85,7 +83,7 @@
       font-weight: normal;
     }
     button {
-      margin: 2em auto;
+      margin: 3em auto;
       display: block;
       padding: 1em 2em;
       background-color: #4a148c;
@@ -133,20 +131,6 @@
     <p class="note">* 必須の質問です</p>
 
     <form id="interview-form" action="https://formspree.io/f/myzjybba" method="POST">
-      <div class="form-group">
-        <label>1. お名前<span class="required">*</span></label>
-        <input type="text" name="name" placeholder="回答を入力" required>
-      </div>
-      <!-- 以下に質問2〜12のブロックを追加 -->
-    </form>
-  </div>
-</body>
-</html>
-
-
-    <form id="interview-form" action="https://formspree.io/f/myzjybba" method="POST">
-      <!-- ここに質問1〜12すべてを含むform-groupブロックがすでに正しく記載されています -->
-      <!-- ご要望のとおり省略せずに含めています -->
       <div class="form-group">
         <label>1. お名前<span class="required">*</span></label>
         <input type="text" name="name" placeholder="回答を入力" required>
@@ -202,13 +186,13 @@
         </div>
       </div>
       <div class="form-group">
-        <label>9. 面談希望日時（第1〜第3候補）まで教えてください。（土日祝可）<span class="required">*</span></label>
-        <small>例）第1希望：5月21日（火） 18:00〜19:00<br>第2希望：5月22日（水） 午前中（9:00〜12:00）<br>第3希望：5月23日（木） 20:00以降なら対応可</small>
+        <label>9. 面談希望日時（第1〜第3候補）<span class="required">*</span></label>
+        <small>例）第1希望：5月21日（火）18:00〜19:00 など</small>
         <textarea name="datetime" rows="3" placeholder="回答を入力" required></textarea>
       </div>
       <div class="form-group">
         <label>10. ご連絡しやすい方法と時間<span class="required">*</span></label>
-        <small>※例：「平日18時以降にLINE希望」「土日なら電話可」など</small>
+        <small>例：「平日18時以降にLINE希望」など</small>
         <input type="text" name="contact_time" placeholder="回答を入力" required>
       </div>
       <div class="form-group">
@@ -228,6 +212,7 @@
       <button type="submit">送信する</button>
     </form>
   </div>
+
   <script>
     document.getElementById("interview-form").addEventListener("submit", function(event) {
       const form = event.target;
@@ -248,12 +233,12 @@
 
       event.preventDefault();
       const container = form.closest(".container");
-      container.innerHTML = 
+      container.innerHTML = `
         <div style="text-align: center; padding: 80px 20px;">
           <h2 style="color: #4a148c; font-size: 1.5em;">送信完了しました！</h2>
           <p style="margin-top: 1em; font-size: 1.1em;">担当者より24時間以内にご連絡させていただきます！</p>
         </div>
-      ;
+      `;
     });
   </script>
 </body>
