@@ -218,12 +218,13 @@
         if (response.ok) {
           
           document.querySelector('.form-container')?.remove();
-          document.body.innerHTML += `
-            <div style="max-width: 700px; margin: 5em auto; padding: 2em; background: white; border-radius: 8px; text-align: center; box-shadow: 0 0 10px rgba(0,0,0,0.1);">
-              <h1 style="color: #4a148c;">送信ありがとうございました！</h1>
-              <p>担当者よりご連絡いたします。</p>
-            </div>
-          `;
+          const messageDiv = document.createElement('div');
+messageDiv.style.cssText = 'max-width: 700px; margin: 5em auto; padding: 2em; background: white; border-radius: 8px; text-align: center; box-shadow: 0 0 10px rgba(0,0,0,0.1);';
+messageDiv.innerHTML = `
+  <h1 style="color: #4a148c;">送信ありがとうございました！</h1>
+  <p>担当者よりご連絡いたします。</p>
+`;
+document.body.appendChild(messageDiv);
         } else {
           alert("送信に失敗しました。もう一度お試しください。");
         }
