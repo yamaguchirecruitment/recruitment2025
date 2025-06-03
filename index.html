@@ -19,7 +19,7 @@
       padding: 1em;
       margin: 0;
     }
-    .form-container {
+    .intro-container, .form-container {
       background-color: white;
       padding: 2em;
       max-width: 700px;
@@ -54,7 +54,9 @@
       border-radius: 6px;
       font-size: 1em;
     }
-    input::placeholder, textarea::placeholder { color: #aaa; }
+    input::placeholder, textarea::placeholder {
+      color: #aaa;
+    }
     .checkbox-group label, .radio-group label {
       display: flex;
       align-items: center;
@@ -75,22 +77,32 @@
       width: 100%;
       max-width: 600px;
     }
-    .required { color: red; margin-left: 0.3em; }
-    @media screen and (max-width: 600px) {
-      .form-group { padding: 1.5em; margin: 2.5em auto; }
-      input, textarea { font-size: 0.95em; }
-      label, small { font-size: 0.95em; }
-      button { font-size: 1em; }
+    .required {
+      color: red;
+      margin-left: 0.3em;
     }
   </style>
 </head>
 <body>
-  <form id="interview-form" class="form-container">
-  <div class="form-group">
-  <label>0. メールアドレスを教えてください<span class="required">*</span></label>
-  <input type="email" name="email" required placeholder="例：example@example.com">
-</div>
+  <div class="intro-container">
+    <h1>ヤマグチレッカー｜カジュアル面談 お申し込みフォーム</h1>
+    <p>ご覧いただきありがとうございます！</p>
+    <p>ヤマグチレッカーでは、まずは「気軽に話してみたい」「ちょっと興味がある」<br>
+    という方でもご相談いただける【カジュアル面談】を実施しています。</p>
+    <p>✔ 履歴書不要<br>
+    ✔ 私服OK<br>
+    ✔ オンライン・電話も対応<br>
+    ✔ 面談後の応募は自由です</p>
+    <p>「どんな仕事か聞いてみたい」「職場の雰囲気が気になる」など、どんなきっかけでも大歓迎です。</p>
+    <p>以下のフォームにご記入いただけましたら、担当者より24時間以内にご連絡させていただきます。</p>
+    <p class="note">* 必須の質問です</p>
+  </div>
 
+  <form id="interview-form" class="form-container">
+    <div class="form-group">
+      <label>0. メールアドレスを教えてください<span class="required">*</span></label>
+      <input type="email" name="email" required placeholder="例：example@example.com">
+    </div>
     <div class="form-group">
       <label>1. お名前<span class="required">*</span></label>
       <input type="text" name="name" required placeholder="回答を入力">
@@ -109,7 +121,7 @@
       <input type="text" name="occupation" required placeholder="回答を入力">
     </div>
     <div class="form-group">
-      <label>5. お持ちの運転免許<span class="required">*</span></label>
+      <label>5. お持ちの運転免許はなんですか？<span class="required">*</span></label>
       <div class="checkbox-group">
         <label><input type="checkbox" name="license" value="普通免許"> 普通免許</label>
         <label><input type="checkbox" name="license" value="準中型免許"> 準中型免許</label>
@@ -147,13 +159,12 @@
     </div>
     <div class="form-group">
       <label>9. 面談希望日時（第1〜第3候補）<span class="required">*</span></label>
-      <small>例）第1希望：6月5日（水）18:00〜19:00／第2希望：6月6日（木）午前中（9:00〜12:00）／第3希望：6月7日（金）20:00以降</small>
+      <small>例）第1希望：6月5日（水）18:00〜19:00／第2希望：6月6日（木）午前中（9:00〜12:00）／第3希望：6月7日（金）20:00以降なら対応可</small>
       <textarea name="datetime" rows="3" required placeholder="回答を入力"></textarea>
     </div>
     <div class="form-group">
       <label>10. ご連絡しやすい方法と時間<span class="required">*</span></label>
-      <small>例：平日18時以降なら都合がいい</small>
-      <input type="text" name="contact_time" required placeholder="回答を入力">
+      <input type="text" name="contact_time" required placeholder="例：平日18時以降なら都合がいい">
     </div>
     <div class="form-group">
       <label>11. 当社を知ったきっかけ<span class="required">*</span></label>
@@ -176,16 +187,16 @@
     document.getElementById("interview-form").addEventListener("submit", async function(event) {
       event.preventDefault();
       const form = event.target;
-      const licenseChecked = form.querySelectorAll('input[name=\"license\"]:checked').length > 0;
-      const interestChecked = form.querySelectorAll('input[name=\"interest\"]:checked').length > 0;
+      const licenseChecked = form.querySelectorAll('input[name="license"]:checked').length > 0;
+      const interestChecked = form.querySelectorAll('input[name="interest"]:checked').length > 0;
 
       if (!form.checkValidity()) return;
       if (!licenseChecked) {
-        alert(\"5. お持ちの運転免許 を1つ以上選択してください。\");
+        alert("5. お持ちの運転免許 を1つ以上選択してください。");
         return;
       }
       if (!interestChecked) {
-        alert(\"6. 気になっていること を1つ以上選択してください。\");
+        alert("6. 気になっていること を1つ以上選択してください。");
         return;
       }
 
@@ -196,8 +207,8 @@
 
       const formData = new FormData(form);
       try {
-        const response = await fetch(\"https://formspree.io/f/myzjybba\", {
-          method: \"POST\",
+        const response = await fetch("https://formspree.io/f/myzjybba", {
+          method: "POST",
           body: formData,
           headers: {
             'Accept': 'application/json'
@@ -205,17 +216,19 @@
         });
 
         if (response.ok) {
-          document.body.innerHTML = `
-            <div style=\"max-width: 700px; margin: 5em auto; padding: 2em; background: white; border-radius: 8px; text-align: center; box-shadow: 0 0 10px rgba(0,0,0,0.1);\">
-              <h1 style=\"color: #4a148c;\">送信ありがとうございました！</h1>
+          document.querySelector('.intro-container')?.remove();
+          document.querySelector('.form-container')?.remove();
+          document.body.innerHTML += `
+            <div style="max-width: 700px; margin: 5em auto; padding: 2em; background: white; border-radius: 8px; text-align: center; box-shadow: 0 0 10px rgba(0,0,0,0.1);">
+              <h1 style="color: #4a148c;">送信ありがとうございました！</h1>
               <p>担当者よりご連絡いたします。</p>
             </div>
           `;
         } else {
-          alert(\"送信に失敗しました。もう一度お試しください。\");
+          alert("送信に失敗しました。もう一度お試しください。");
         }
       } catch (error) {
-        alert(\"通信エラーが発生しました。ネットワークをご確認ください。\");
+        alert("通信エラーが発生しました。ネットワークをご確認ください。");
       }
     });
   </script>
