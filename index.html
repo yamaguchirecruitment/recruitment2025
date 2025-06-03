@@ -12,7 +12,9 @@
     gtag('config', 'G-9522B8XWTD');
   </script>
   <style>
-    * { box-sizing: border-box; }
+    * {
+      box-sizing: border-box;
+    }
     body {
       font-family: sans-serif;
       background-color: #f3edf9;
@@ -27,6 +29,9 @@
       border-radius: 8px;
       box-shadow: 0 0 10px rgba(0, 0, 0, 0.05);
     }
+    .intro {
+      margin-bottom: 2em;
+    }
     h1 {
       font-size: 1.8em;
       margin-bottom: 1em;
@@ -38,32 +43,29 @@
       margin-bottom: 2em;
     }
     form {
-      margin-top: 3em;
+      margin-top: 2em;
     }
     .form-group {
       margin: 2.5em auto;
-      padding: 1.5em;
+      padding: 2em;
       border: 1px solid #e0e0e0;
       border-radius: 10px;
       background-color: #fafafa;
-      width: 90%;
+      width: 100%;
       max-width: 600px;
-    }
-    .form-group:first-of-type {
-      margin-top: 3.5em;
     }
     .form-group label {
       display: block;
-      margin-bottom: 0.7em;
+      margin-bottom: 1em;
       font-weight: bold;
       font-size: 1.1em;
     }
     .form-group small {
       display: block;
-      margin-bottom: 0.5em;
+      margin-bottom: 1em;
       color: #666;
     }
-    input[type="text"], textarea {
+    input[type="text"], input[type="email"], textarea {
       width: 100%;
       padding: 1em;
       border: 1px solid #ccc;
@@ -71,6 +73,7 @@
       font-size: 1em;
     }
     input[type="text"]::placeholder,
+    input[type="email"]::placeholder,
     textarea::placeholder {
       color: #aaa;
     }
@@ -92,7 +95,7 @@
       border-radius: 6px;
       font-size: 1.1em;
       cursor: pointer;
-      width: 90%;
+      width: 100%;
       max-width: 600px;
     }
     .required {
@@ -101,10 +104,10 @@
     }
     @media screen and (max-width: 600px) {
       .form-group {
-        padding: 1.5em 1em;
+        padding: 1.5em;
         margin: 2.5em auto;
       }
-      input[type="text"], textarea {
+      input[type="text"], input[type="email"], textarea {
         font-size: 0.95em;
       }
       label, small {
@@ -118,18 +121,21 @@
 </head>
 <body>
   <div class="container">
-    <h1>ヤマグチレッカー｜カジュアル面談 お申し込みフォーム</h1>
-    <p>ご覧いただきありがとうございます！</p>
-    <p>ヤマグチレッカーでは、まずは「気軽に話してみたい」「ちょっと興味がある」<br>
-    という方でもご相談いただける【カジュアル面談】を実施しています。</p>
-    <p>✔ 履歴書不要<br>
-    ✔ 私服OK<br>
-    ✔ オンライン・電話も対応<br>
-    ✔ 面談後の応募は自由です</p>
-    <p>「どんな仕事か聞いてみたい」「職場の雰囲気が気になる」など、どんなきっかけでも大歓迎です。</p>
-    <p>以下のフォームにご記入いただけましたら、担当者より24時間以内にご連絡させていただきます。</p>
-    <p class="note">* 必須の質問です</p>
+    <div class="intro">
+      <h1>ヤマグチレッカー｜カジュアル面談 お申し込みフォーム</h1>
+      <p>ご覧いただきありがとうございます！</p>
+      <p>ヤマグチレッカーでは、まずは「気軽に話してみたい」「ちょっと興味がある」<br>
+      という方でもご相談いただける【カジュアル面談】を実施しています。</p>
+      <p>✔ 履歴書不要<br>
+      ✔ 私服OK<br>
+      ✔ オンライン・電話も対応<br>
+      ✔ 面談後の応募は自由です</p>
+      <p>「どんな仕事か聞いてみたい」「職場の雰囲気が気になる」など、どんなきっかけでも大歓迎です。</p>
+      <p>以下のフォームにご記入いただけましたら、担当者より24時間以内にご連絡させていただきます。</p>
+      <p class="note">* 必須の質問です</p>
+    </div>
 
+    <!-- フォーム -->
     <form id="interview-form" action="https://formspree.io/f/myzjybba" method="POST">
       <div class="form-group">
         <label>1. お名前<span class="required">*</span></label>
@@ -186,13 +192,13 @@
         </div>
       </div>
       <div class="form-group">
-        <label>9. 面談希望日時（第1〜第3候補）<span class="required">*</span></label>
-        <small>例）第1希望：5月21日（火）18:00〜19:00 など</small>
+        <label>9. 面談希望日時（第1〜第3候補）まで教えてください。（土日祝可）<span class="required">*</span></label>
+        <small>例）第1希望：5月21日（火） 18:00〜19:00<br>第2希望：5月22日（水） 午前中（9:00〜12:00）<br>第3希望：5月23日（木） 20:00以降なら対応可</small>
         <textarea name="datetime" rows="3" placeholder="回答を入力" required></textarea>
       </div>
       <div class="form-group">
         <label>10. ご連絡しやすい方法と時間<span class="required">*</span></label>
-        <small>例：「平日18時以降にLINE希望」など</small>
+        <small>※例：「平日18時以降にLINE希望」「土日なら電話可」など</small>
         <input type="text" name="contact_time" placeholder="回答を入力" required>
       </div>
       <div class="form-group">
@@ -212,7 +218,6 @@
       <button type="submit">送信する</button>
     </form>
   </div>
-
   <script>
     document.getElementById("interview-form").addEventListener("submit", function(event) {
       const form = event.target;
