@@ -27,8 +27,7 @@
       max-width: 700px;
       margin: 2em auto;
       border-radius: 8px;
-      box-shadow: 0 0 20px rgba(0, 0, 0, 0.1);
-      border: 1px solid #ccc;
+      box-shadow: 0 0 10px rgba(0, 0, 0, 0.05);
     }
     h1 {
       font-size: 1.8em;
@@ -60,7 +59,7 @@
       margin-bottom: 1em;
       color: #666;
     }
-    input[type="text"], textarea {
+    input[type="text"], input[type="email"], textarea {
       width: 100%;
       padding: 1em;
       border: 1px solid #ccc;
@@ -127,8 +126,12 @@
     <p>以下のフォームにご記入いただけましたら、担当者より24時間以内にご連絡させていただきます。</p>
     <p class="note">* 必須の質問です</p>
   </div>
-</body>
-</html>
+
+  <form id="interview-form" class="form-container" action="https://formspree.io/f/myzjybba" method="POST">
+    <div class="form-group">
+      <label>0. メールアドレスを教えてください<span class="required">*</span></label>
+      <input type="email" name="email" required placeholder="例：example@example.com">
+    </div>
 
   <form id="interview-form" class="form-container" action="https://formspree.io/f/myzjybba" method="POST">
     <div class="form-group">
